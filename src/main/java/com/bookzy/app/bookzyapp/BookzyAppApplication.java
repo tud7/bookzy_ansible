@@ -24,6 +24,6 @@ class GreetingController {
     
     @RequestMapping("/")
 	public String index() {
-		return "Hello from Bookzy by Tu Duong!";
+		return "Hello from Bookzy-1.0 by Tu Duong!";
 	}
 }
