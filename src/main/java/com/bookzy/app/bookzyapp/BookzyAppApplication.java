@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SpringBootApplication
 public class BookzyAppApplication {
 
+	public static boolean alwaysTrue() {
+		return true;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(BookzyAppApplication.class, args);
 	}
