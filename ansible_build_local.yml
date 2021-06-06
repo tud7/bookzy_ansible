@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Git clone
+      ansible.builtin.git:
+        repo: https://github.com/tud7/bookzy_ansible.git
+        dest: bookzy_ansible
+
+    - name: Build and package maven build
+      command: cd bookzy_ansible && mvn -f pom.xml clean package
+

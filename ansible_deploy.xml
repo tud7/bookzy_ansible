@@ -1,0 +1,26 @@
+---
+- hosts: clients
+  become: true
+
+  tasks:
+    - name: Stop the Tomcat service, if running
+      ansible.builtin.systemd:
+        state: stopped
+        name: tomcat
+
+    - name: Delete existing war file
+      ansible.builtin.file:
+        path: /opt/tomcat/webapps/bookzy-app-1.0.war
+        state: absent
+
+    - name: Deploy war file
+      ansible.builtin.copy:
+        src: target/bookzy-app-1.0.war
+        dest: /opt/tomcat/webapps/bookzy-app-1.0.war
+
+    - name: Start Tomcat
+      ansible.builtin.systemd:
+        state: started
+        daemon_reload: yes
+        name: tomcat
+
