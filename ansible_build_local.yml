@@ -8,6 +8,9 @@
         repo: https://github.com/tud7/bookzy_ansible.git
         dest: bookzy_ansible
 
+    - name: Change to project directory
+      ansible.builtin.shell: cd bookzy_ansible
+
     - name: Build and package maven build
-      command: cd bookzy_ansible && mvn -f pom.xml clean package
+      command: mvn compile war:war
 
